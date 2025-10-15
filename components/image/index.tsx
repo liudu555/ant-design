@@ -106,7 +106,15 @@ const Image: CompositionImage<ImageProps> = (props) => {
       zIndex,
       closeIcon: closeIcon ?? contextPreview?.closeIcon,
     };
-  }, [preview, imageLocale, contextPreview?.closeIcon]);
+  }, [
+    preview,
+    prefixCls,
+    imageLocale?.preview,
+    mergedRootClassName,
+    rootPrefixCls,
+    zIndex,
+    contextPreview?.closeIcon,
+  ]);
 
   const mergedStyle: React.CSSProperties = { ...contextStyle, ...style };
 

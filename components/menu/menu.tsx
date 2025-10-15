@@ -155,7 +155,14 @@ const InternalMenu = forwardRef<RcMenuRef, InternalMenuProps>((props, ref) => {
       mode: mergedMode,
       disableMenuItemTitleTooltip: _internalDisableMenuItemTitleTooltip,
     }),
-    [prefixCls, mergedInlineCollapsed, direction, _internalDisableMenuItemTitleTooltip, theme],
+    [
+      prefixCls,
+      mergedInlineCollapsed,
+      direction,
+      theme,
+      mergedMode,
+      _internalDisableMenuItemTitleTooltip,
+    ],
   );
 
   // ========================= Render ==========================

@@ -96,7 +96,7 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>((props, ref) =>
       return new FastColor(color).isLight();
     }
     return false;
-  }, [strokeColor]);
+  }, [strokeColorNotArray]);
 
   const percentNumber = React.useMemo<number>(() => {
     const successPercent = getSuccessPercent(props);
@@ -104,7 +104,7 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>((props, ref) =>
       successPercent !== undefined ? (successPercent ?? 0)?.toString() : (percent ?? 0)?.toString(),
       10,
     );
-  }, [percent, props.success, props.successPercent]);
+  }, [percent, props]);
 
   const progressStatus = React.useMemo<(typeof ProgressStatuses)[number]>(() => {
     if (!ProgressStatuses.includes(status!) && percentNumber >= 100) {
@@ -155,7 +155,19 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>((props, ref) =>
         {text}
       </span>
     );
-  }, [showInfo, percent, percentNumber, progressStatus, type, prefixCls, format]);
+  }, [
+    showInfo,
+    props,
+    format,
+    isLineType,
+    strokeColorIsBright,
+    infoPosition,
+    progressStatus,
+    prefixCls,
+    infoAlign,
+    isPureLineType,
+    percent,
+  ]);
 
   if (process.env.NODE_ENV !== 'production') {
     const warning = devUseWarning('Progress');

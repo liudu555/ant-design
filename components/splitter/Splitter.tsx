@@ -153,7 +153,7 @@ const Splitter: React.FC<React.PropsWithChildren<SplitterProps>> = (props) => {
     }
 
     return mergedSizes;
-  }, [itemPtgSizes]);
+  }, [itemPtgSizes, items.length]);
 
   const mergedStyle: React.CSSProperties = { ...contextStyle, ...style };
 

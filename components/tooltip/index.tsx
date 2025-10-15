@@ -261,7 +261,16 @@ const InternalTooltip = React.forwardRef<TooltipRef, TooltipProps>((props, ref) 
         visibleFirst: true,
       })
     );
-  }, [arrowPointAtCenter, arrow, builtinPlacements, token]);
+  }, [
+    arrowPointAtCenter,
+    arrow,
+    builtinPlacements,
+    autoAdjustOverflow,
+    mergedShowArrow,
+    token.sizePopupArrow,
+    token.borderRadius,
+    token.marginXXS,
+  ]);
 
   const memoOverlay = React.useMemo<TooltipProps['overlay']>(() => {
     if (title === 0) {

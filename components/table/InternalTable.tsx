@@ -220,7 +220,7 @@ const InternalTable = <RecordType extends AnyObject = AnyObject>(
     }
 
     return null;
-  }, [rawData]);
+  }, [childrenColumnName, rawData]);
 
   const internalRefs: NonNullable<RcTableProps['internalRefs']> = {
     body: React.useRef<HTMLDivElement>(null),
@@ -323,7 +323,7 @@ const InternalTable = <RecordType extends AnyObject = AnyObject>(
   });
   const sortedData = React.useMemo(
     () => getSortData(rawData, sortStates, childrenColumnName),
-    [rawData, sortStates],
+    [childrenColumnName, rawData, sortStates],
   );
 
   changeEventInfo.sorter = getSorters();
@@ -408,13 +408,7 @@ const InternalTable = <RecordType extends AnyObject = AnyObject>(
     }
 
     return mergedData.slice((current - 1) * pageSize, current * pageSize);
-  }, [
-    !!pagination,
-    mergedData,
-    mergedPagination?.current,
-    mergedPagination?.pageSize,
-    mergedPagination?.total,
-  ]);
+  }, [mergedData, mergedPagination, pagination]);
 
   // ========================== Selections ==========================
   const [transformSelectionColumns, selectedKeySet] = useSelection<RecordType>(

@@ -121,7 +121,7 @@ const Compact: React.FC<SpaceCompactProps> = (props) => {
           </CompactItem>
         );
       }),
-    [size, childNodes, compactItemContext],
+    [childNodes, prefixCls, mergedSize, direction, compactItemContext],
   );
 
   // =========================== Render ===========================

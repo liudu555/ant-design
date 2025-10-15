@@ -214,7 +214,7 @@ const TransferList = <RecordType extends KeyWiseTransferItem>(
       return 'all';
     }
     return 'part';
-  }, [checkedKeys, checkedActiveItems]);
+  }, [checkedActiveItems.length, checkedKeys, filteredItems]);
 
   const listBody = useMemo<React.ReactNode>(() => {
     const search = showSearch ? (
@@ -261,6 +261,7 @@ const TransferList = <RecordType extends KeyWiseTransferItem>(
   }, [
     showSearch,
     prefixCls,
+    searchOptions.placeholder,
     searchPlaceholder,
     filterValue,
     disabled,

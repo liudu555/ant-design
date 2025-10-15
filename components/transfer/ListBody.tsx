@@ -71,7 +71,7 @@ const TransferListBody: React.ForwardRefRenderFunction<
       const maxPageCount = Math.ceil(filteredRenderItems.length / pageSize!);
       setCurrent(Math.min(current, maxPageCount));
     }
-  }, [filteredRenderItems, mergedPagination, pageSize]);
+  }, [current, filteredRenderItems, mergedPagination, pageSize]);
 
   const onInternalClick = (item: KeyWiseTransferItem, e: React.MouseEvent<Element, MouseEvent>) => {
     onItemSelect(item.key, !selectedKeys.includes(item.key), e);

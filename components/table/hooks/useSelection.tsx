@@ -367,7 +367,20 @@ const useSelection = <RecordType extends AnyObject = AnyObject>(
           updatePrevSelectedIndex(null);
         },
       }));
-  }, [selections, derivedSelectedKeySet, pageData, getRowKey, onSelectInvert, setSelectedKeys]);
+  }, [
+    selections,
+    hideSelectAll,
+    tableLocale.selectionAll,
+    tableLocale.selectInvert,
+    tableLocale.selectNone,
+    setSelectedKeys,
+    data,
+    getRowKey,
+    checkboxPropsMap,
+    derivedSelectedKeySet,
+    pageData,
+    onSelectInvert,
+  ]);
 
   // ======================= Columns ========================
   const transformColumns = useCallback(
@@ -722,19 +735,35 @@ const useSelection = <RecordType extends AnyObject = AnyObject>(
       return cloneColumns.map((col) => (col === SELECTION_COLUMN ? selectionColumn : col));
     },
     [
-      getRowKey,
-      flattedData,
       rowSelection,
-      derivedSelectedKeys,
       derivedSelectedKeySet,
-      derivedHalfSelectedKeySet,
+      flattedData,
+      getRowKey,
+      selectionType,
+      warning,
+      fixed,
+      prefixCls,
+      selections,
       selectionColWidth,
-      mergedSelections,
-      expandType,
       checkboxPropsMap,
-      onSelectMultiple,
+      onSelectAll,
+      setSelectedKeys,
+      updatePrevSelectedIndex,
+      getRecordByKey,
+      mergedSelections,
+      getTitleCheckboxProps,
+      hideSelectAll,
+      getPopupContainer,
       triggerSingleSelection,
+      derivedHalfSelectedKeySet,
+      expandType,
+      derivedSelectedKeys,
+      checkStrictly,
+      multipleSelect,
+      onSelectMultiple,
+      keyEntities,
       isCheckboxDisabled,
+      customizeRenderCell,
     ],
   );
 

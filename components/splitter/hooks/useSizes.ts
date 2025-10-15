@@ -85,7 +85,7 @@ export default function useSizes(items: PanelProps[], containerSize?: number) {
 
     // Use autoPtgSizes to handle the undefined sizes
     return autoPtgSizes(ptgList, postPercentMinSizes, postPercentMaxSizes);
-  }, [sizes, mergedContainerSize, postPercentMinSizes, postPercentMaxSizes]);
+  }, [postPercentMinSizes, postPercentMaxSizes, itemsCount, sizes, mergedContainerSize]);
 
   const postPxSizes = React.useMemo(
     () => postPercentSizes.map(ptg2px),
@@ -95,7 +95,7 @@ export default function useSizes(items: PanelProps[], containerSize?: number) {
   // If ssr, we will use the size from developer config first.
   const panelSizes = React.useMemo(
     () => (containerSize ? postPxSizes : sizes),
-    [postPxSizes, containerSize],
+    [containerSize, postPxSizes, sizes],
   );
 
   return [
